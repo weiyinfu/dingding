@@ -22,8 +22,8 @@ app.on("ready", () => {
   // 创建浏览器窗口
   win = new BrowserWindow({
     width: 800,
-    height: 600,
-    frame: false, //是否显示外边框
+    height: 800*(Math.sqrt(5)-1)/2,
+    frame: true, //是否显示外边框
   })
   win.loadURL("https://im.dingtalk.com")
   win.webContents.on("dom-ready", () => {
