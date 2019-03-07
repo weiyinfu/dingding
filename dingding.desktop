@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=钉钉
+Comment=企业即时通讯工具
+Exec="/opt/dingding/dingding 1.0.0.AppImage" %U
+Terminal=false
+Type=Application
+Icon=/opt/dingding/dingding.ico
+StartupWMClass=dingding
+X-AppImage-Version=1.0.0
+Categories=Utility;
+X-AppImage-BuildId=1I5H1A66nkZKP14uSR0pUo9hb5f
+X-Desktop-File-Install-Version=0.22
+
