@@ -34,3 +34,4 @@ X-Desktop-File-Install-Version=0.22
 chmod +x dingding.desktop
 cp dingding.desktop /usr/share/applications/
 echo "按下win键，搜索钉钉，便可运行"
+echo "双击”钉钉“顶部可以全屏"

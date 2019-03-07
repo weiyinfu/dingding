@@ -8,6 +8,17 @@
 * 新消息通知，显示消息内容
 * 文件上传
 
+# 操作
+* 开发：npm run dev
+* 打包：npm run build
+* 安装到本地：./install.sh
+
+# 给别人用
+如果给别人用，只需要三个文件
+* 安装脚本：install.sh
+* 可执行程序：dist/dingding 1.0.0.Appimage
+* 图标：dingding.ico
+
 # 参考资料 
 * [微信electron版](https://ywnz.com/linuxjc/2609.html)
 * [electron中文教程](https://www.w3cschool.cn/electronmanual/)
