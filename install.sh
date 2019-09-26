@@ -1,6 +1,7 @@
 # 以sudo权限执行本文件
 # target_dir表示钉钉安装位置，target_dir必须是绝对路径
 target_dir=/opt/dingding
+app_name="dingding-1.0.0.AppImage"
 
 
 if [ ! -d $target_dir ];then
@@ -10,7 +11,6 @@ else
   echo "文件夹$target_dir已经存在"
 fi
 echo "复制图标和可执行程序"
-app_name="dingding 1.0.0.AppImage"
 # 如果是开发阶段，appImage在./dist目录下
 # 如果是正式安装阶段，appImage在./目录下
 app_image="./dist/$app_name"
