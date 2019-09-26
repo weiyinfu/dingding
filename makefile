@@ -7,6 +7,8 @@ build:compile_less
 	electron-builder
 dev:compile_less
 	electron .
+run:dev
+	echo "running..."
 package:
 	@if [ ! -d $(target_dir)/$(package_name) ]; then \
 	   mkdir $(target_dir)/$(package_name);  \

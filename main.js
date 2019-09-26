@@ -51,6 +51,10 @@ app.on("ready", () => {
     // 与此同时，你应该删除相应的元素。
     win = null
   })
+  win.on("blur", () => {
+  })
+  win.on("focus", () => {
+  })
 })
 // 当全部窗口关闭时退出。
 app.on("window-all-closed", () => {

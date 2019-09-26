@@ -18,6 +18,7 @@
   //上次检查时的新消息数，只有当新消息数增多时才报警，如果新消息数变化了，该值应该立即更新
 
   function hasClass(ele, className) {
+    if (!ele.className) return false
     return ele.className.indexOf(className) != -1
   }
   function parent(ele, className) {
@@ -47,6 +48,7 @@
     for (var unreadElement of unread) {
       var unreadNumber = unreadElement.querySelector(".unread-num").innerText.trim()
       unreadNumber = unreadNumber.length == 0 ? 0 : parseInt(unreadNumber)
+
       var user = unreadElement.querySelector(".name").innerText.trim()
       if (!user) return []//如果用户名为空说明尚未加载成功
       var content = unreadElement.querySelector(".latest-msg").innerText.trim()
@@ -67,6 +69,7 @@
     }
     return unreadCount
   }
+
   var lastUnreadCount = 0
   function checkUnread() {
     var unreadCount = getUnreadCount()
@@ -74,7 +77,6 @@
       if (unreadCount > 0) {
         var messages = getUnreadMessages()
         if (messages.length) {
-          console.log(`sending messages ${messages}`)
           ipcRenderer.send("message", messages)
         }
       }
@@ -82,5 +84,7 @@
     lastUnreadCount = unreadCount
     setTimeout(checkUnread, CHECK_UNREAD_TIMEOUT);
   }
+
+
   checkUnread()
 })()

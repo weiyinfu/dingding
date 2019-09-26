@@ -16,7 +16,6 @@ function generateContent(message) {
 }
 module.exports = (ipcMain, window) => {
 	ipcMain.on("message", (event, message) => {
-		console.log(`got message ${message}`)
 		var { content, title } = generateContent(message)
 		new Notification({
 			title: title,
@@ -26,6 +25,7 @@ module.exports = (ipcMain, window) => {
 			// sound: "haha.wav"
 		}).show()
 	})
+
 }
 if (require.main == module) {
 	//测试Notification，使用"electron 此文件"  来测试
