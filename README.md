@@ -1,25 +1,35 @@
-本repo是钉钉简单的封装，详细封装可以参考[钉钉electron版](https://github.com/nashaofu/dingtalk)。
+[使用electron封装网页版钉钉](git@github.com:weiyinfu/dingding.git)
 
-# 已包含功能
-* 新消息通知，但是没显示消息内容
-* 全屏
+# 功能说明
+1. 使用electron封装网页版钉钉并加以定制，获取客户端一样的体验
+2. 解决了网页版钉钉内容区域无法最大化的问题
+3. 窗口按钮：最大化、最小化、关闭
+4. 消息通知，可以显示消息详情
 
-# TODO
-* 新消息通知，显示消息内容
-* 文件上传
+# 使用
+## 普通用户
+下载“钉钉安装包.tar.gz”，解压并进入此目录，运行install.sh即可。
 
-# 操作
-* 开发：npm run dev
-* 打包：npm run build
-* 安装到本地：./install.sh
+## 开发者
+* 开发：make dev
+* 编译：make build
+* 打包：make package
+* 
+* 安装到本地：make install
 
-# 给别人用
-如果给别人用，只需要三个文件
-* 安装脚本：install.sh
-* 可执行程序：dist/dingding 1.0.0.Appimage
-* 图标：dingding.ico
+# 代码风格
+1. 能用CSS解决的问题就不要用JS
+2. 一切功能扩展都在plugin目录下，每个功能扩展应该互相独立，完全解耦。想删除某个功能只需要删除一个文件即可。main.js会自动扫描plugin目录下的全部文件，将以Server.js结尾的文件调用它们的函数，将不以Server.js结尾的文件注入到浏览器中。
+3. 在所有的进程中，如果需要访问图片资源或者其他资源，请通过`path.join(app.getAppPath(), './icon/32x32.png')`的方式来获取，因为打包之后相对的目录结构不能保证一致
+4. 安装只需要四个文件
+  * 安装脚本：install.sh
+  * 可执行程序：dist/dingding 1.0.0.Appimage
+  * 图标：dingding.ico
+  * dingding.desktop
 
+tar -czf dingding.tar.gz install.sh dingding.ico dingding.desktop -C dist "dingding 1.0.0.AppImage"
 # 参考资料 
+* [nashaofu的electron钉钉](https://github.com/nashaofu/dingtalk)
 * [微信electron版](https://ywnz.com/linuxjc/2609.html)
 * [electron中文教程](https://www.w3cschool.cn/electronmanual/)
 * [electron官方教程](https://electron.atom.io/docs/)

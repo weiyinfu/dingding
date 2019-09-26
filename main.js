@@ -1,9 +1,9 @@
 const {
   app,
   BrowserWindow,
-  Notification,
-  ipcMain
+  ipcMain,
 } = require("electron")
+
 const fs = require("fs")
 const path = require("path")
 
@@ -13,6 +13,7 @@ var win = null
 if (!app.requestSingleInstanceLock()) {
   app.quit()
 }
+
 //当第一个应用意识到有后来者要取代它时，自动聚焦
 app.on('second-instance', (event, commandLine, workingDirectory) => {
   if (win.isMinimized()) win.restore()
@@ -22,17 +23,26 @@ app.on("ready", () => {
   // 创建浏览器窗口
   win = new BrowserWindow({
     width: 800,
-    height: 800*(Math.sqrt(5)-1)/2,
-    frame: true, //是否显示外边框
+    height: 800 * (Math.sqrt(5) - 1) / 2,
+    frame: false, //是否显示外边框
   })
   win.loadURL("https://im.dingtalk.com")
   win.webContents.on("dom-ready", () => {
+    //注入JS和CSS
     var cssContent = fs.readFileSync(path.join(__dirname, "custom.css")).toString("utf8")
     win.webContents.insertCSS(cssContent)
-    var clientJsFolder = path.join(__dirname, "client")
+    var clientJsFolder = path.join(__dirname, "plugin")
     for (var jsFileName of fs.readdirSync(clientJsFolder)) {
-      var jsContent = fs.readFileSync(path.join(clientJsFolder, jsFileName)).toString("utf8")
-      win.webContents.executeJavaScript(jsContent)
+      var fullPath = path.join(clientJsFolder, jsFileName)
+      console.log("load " + fullPath)
+      if (jsFileName.endsWith("Server.js")) {
+        var func = require(fullPath)
+        func(ipcMain, win)
+      } else {
+        var jsContent = fs.readFileSync(fullPath).toString("utf8")
+        win.webContents.executeJavaScript(jsContent)
+      }
+
     }
   })
   win.on("closed", () => {
@@ -55,13 +65,4 @@ app.on("activate", () => {
     createWindow()
   }
 })
-//当收到新消息时
-ipcMain.on("message", () => {
-  new Notification({
-    title: "钉钉",
-    subtitle: "",
-    body: "有新消息",
-    icon: "./dingding.ico",
-    // sound: "haha.wav"
-  }).show()
-})
+

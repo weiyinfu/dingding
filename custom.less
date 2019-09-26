@@ -16,4 +16,56 @@ body {
     .chat-item.responsive-box .content-area .msg-bubble-box .msg-bubble-area .msg-content-wrapper .msg-bubble {
         font-size: 20px !important;
     }
+
+    .login-form .tab-items :nth-child(2) {
+        //用户名密码登录已经下线了，显示它作甚
+        display: none;
+    }
+
+    #menu-pannel {
+        //侧边菜单栏宽度自动
+        width: auto;
+    }
+
+    #header {
+        //顶部菜单栏宽度自动
+        flex: auto;
+        height: auto;
+    }
+}
+
+
+
+.window-operations .operation-button {
+    font-family: 'dingtalk-font' !important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    float: right;
+    width: 23px;
+    height: 23px;
+    line-height: 23px;
+    margin: 0 1px;
+    font-size: 19px;
+    text-align: center;
+    z-index: 100;
+    color: rgb(221, 202, 202);
+    cursor: pointer;
+    -webkit-app-region: no-drag;
+
+    &:hover {
+        color: #1f1f1f;
+        font-weight: 400;
+    }
+
+    &.close-window:before {
+        content: '✕';
+    }
+
+    &.mini-window:before {
+        content: '−';
+    }
+
+    &.expand-window:before {
+        content: '□';
+    }
 }

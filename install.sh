@@ -11,6 +11,8 @@ else
 fi
 echo "复制图标和可执行程序"
 app_name="dingding 1.0.0.AppImage"
+# 如果是开发阶段，appImage在./dist目录下
+# 如果是正式安装阶段，appImage在./目录下
 app_image="./dist/$app_name"
 if [ ! -f "$app_image" ] ; then
   app_image="./$app_name"
