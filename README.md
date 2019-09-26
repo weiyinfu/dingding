@@ -1,4 +1,4 @@
-[使用electron封装网页版钉钉](git@github.com:weiyinfu/dingding.git)
+[使用electron封装网页版钉钉]([git@github.com:weiyinfu/dingding.git](https://github.com/weiyinfu/dingding/blob/master/README.md))
 
 # 功能说明
 1. 使用electron封装网页版钉钉并加以定制，获取客户端一样的体验
@@ -14,7 +14,6 @@
 * 开发：make dev
 * 编译：make build
 * 打包：make package
-* 
 * 安装到本地：make install
 
 # 代码风格
