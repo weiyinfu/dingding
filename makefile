@@ -11,6 +11,6 @@ package:
 	   mkdir $(target_dir);  \
 	fi
 	cp install.sh dingding.ico dingding.desktop "dist/dingding 1.0.0.AppImage"  $(target_dir) \
-	&& tar -czf $(package_name).tar.gz -Cdist $(package_name)
+	&& tar -zcvf $(package_name).tar.gz -Cdist $(package_name)
 install:
 	./install.sh
