@@ -1,4 +1,4 @@
-[使用electron封装网页版钉钉](https://github.com/weiyinfu/dingding/blob/master/README.md)
+[使用electron封装网页版钉钉](https://github.com/weiyinfu/dingding)
 
 # 功能说明
 1. 使用electron封装网页版钉钉并加以定制，获取客户端一样的体验
