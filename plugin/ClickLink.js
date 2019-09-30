@@ -18,7 +18,9 @@
   var binded = false//此事件只绑定一次
   function isClass(element, className) {
     //元素的class是否包含className
-    return element.className.indexOf(className) !== -1
+    if (!element.className) return false
+    var classNames = element.className.split(/\s+/)
+    return classNames.indexOf(className) !== -1
   }
   function isInClass(element, className) {
     //元素是否位于某个class内

@@ -9,6 +9,7 @@ const path = require("path")
 
 //主窗口
 var win = null
+var ipcMainInited = false
 //只允许一个应用启动
 if (!app.requestSingleInstanceLock()) {
   app.quit()
@@ -36,14 +37,17 @@ app.on("ready", () => {
       var fullPath = path.join(clientJsFolder, jsFileName)
       console.log("load " + fullPath)
       if (jsFileName.endsWith("Server.js")) {
-        var func = require(fullPath)
-        func(ipcMain, win)
+        if (!ipcMainInited) {
+          var func = require(fullPath)
+          func(ipcMain, win)
+        }
       } else {
         var jsContent = fs.readFileSync(fullPath).toString("utf8")
         win.webContents.executeJavaScript(jsContent)
       }
 
     }
+    ipcMainInited = true
   })
   win.on("closed", () => {
     // 取消引用 window 对象，如果你的应用支持多窗口的话，

@@ -1,5 +1,5 @@
 //三个按钮事件
-module.exports = (ipcMain,window) => {
+module.exports = (ipcMain, window) => {
 	ipcMain.on('minimizeWindow', () => window.minimize())
 
 	ipcMain.on('maximizeWindow', () => {
