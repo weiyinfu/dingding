@@ -7,6 +7,13 @@
 4. 消息通知，可以显示消息详情
 
 # 使用
+下载地址：  
+链接: https://pan.baidu.com/s/1tNKPPaX7qMZTPzULmnQCQQ   
+提取码: aja5
+
+解压之，cd到“钉钉安装包”目录，运行`sudo ./install.sh`
+
+# 开发
 * 源码链接：https://github.com/weiyinfu/dingding
 * 下载源码：`git clone git@github.com:weiyinfu/dingding.git`
 * 安装依赖：`npm install` 
