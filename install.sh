@@ -1,7 +1,9 @@
+#!/bin/bash -e
+
 # 以sudo权限执行本文件
 # target_dir表示钉钉安装位置，target_dir必须是绝对路径
 target_dir=/opt/dingding
-app_name="dingding-1.0.0.AppImage"
+app_name="钉钉-1.0.0.AppImage"
 
 
 if [ ! -d $target_dir ];then

@@ -1,8 +1,10 @@
 {
   "name": "dingding",
   "version": "1.0.0",
+  "author": "wei.yinfu@qq.com",
   "description": "企业即时通讯工具",
   "main": "main.js",
+  "license": "ISC",
   "scripts": {},
   "dependencies": {
     "chalk": "^2.4.2",
@@ -21,6 +23,13 @@
     "url-loader": "^1.1.2"
   },
   "devDependencies": {},
-  "author": "weiyinfu",
-  "license": "ISC"
+  "build": {
+    "productName": "钉钉",
+    "appId": "dingding",
+    "compression": "store",
+    "linux": {
+      "icon": "resources/logo.png",
+      "category": "communicate"
+    }
+  }
 }
