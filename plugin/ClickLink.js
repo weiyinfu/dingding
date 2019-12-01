@@ -22,21 +22,41 @@
     var classNames = element.className.split(/\s+/)
     return classNames.indexOf(className) !== -1
   }
-  function isInClass(element, className) {
-    //元素是否位于某个class内
+  function parent(element, className) {
     var now = element;
     while (now.tagName.toLowerCase() != 'html') {
-      if (isClass(now, className)) return true
+      if (isClass(now, className)) return now;
       now = now.parentNode
     }
-    return false
+    return null;
   }
+  function isInClass(element, className) {
+    //元素是否位于某个class内
+    return parent(element, className) != null;
+  }
+
   function onclick(event) {
     //绑定body的点击事件
+    console.log("click")
+    console.log(event)
+    var a = null
+    //只处理msg-bubble里面的超链接
     var messageSelector = "msg-bubble"
     if (event.target.tagName.toLowerCase() == "a" && isInClass(event.target, messageSelector)) {
       var a = event.target
+    }
+    //点击下载图片按钮，在默认浏览器中打开
+    var imageDownlodSelector = "dimmer-img-download-btn"
+    if (isInClass(event.target, imageDownlodSelector)) {
+      const a = parent(event.target, imageDownlodSelector)
+    }
+    if (a != null) {
       var url = a.href
+      console.log(`clicked url ${url}`)
+      if (url.startsWith("https://im.dingtalk.com")) {
+        //如果是钉钉内部的应用，则不必在浏览器打开
+        return
+      }
       ipcRenderer.send("clickLink", url)
       event.preventDefault()
       event.stopPropagation()
@@ -46,12 +66,13 @@
   function bind() {
     var contentPanel = document.querySelector("body")
     if (contentPanel)
-      contentPanel.addEventListener("click", onclick)
+      contentPanel.addEventListener("click", onclick, true)
     return true
   }
   function update() {
     if (binded) return
     binded = bind()
+
     if (!binded) {
       setTimeout(update, 1000)
     }
