@@ -31,7 +31,7 @@ Type=Application
 Icon=$icon_path
 StartupWMClass=dingding
 X-AppImage-Version=1.0.0
-Categories=Utility;
+Categories=chat;Utility;
 X-AppImage-BuildId=1I5H1A66nkZKP14uSR0pUo9hb5f
 X-Desktop-File-Install-Version=0.22
 ">dingding.desktop

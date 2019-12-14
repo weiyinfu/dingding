@@ -34,7 +34,14 @@
     //元素是否位于某个class内
     return parent(element, className) != null;
   }
-
+  function getParentA(element) {
+    var now = element;
+    while (now.tagName.toLowerCase() != 'html') {
+      if (now.tagName.toLowerCase() == 'a') return now;
+      now = now.parentNode
+    }
+    return null;
+  }
   function onclick(event) {
     //绑定body的点击事件
     console.log("click")
@@ -43,20 +50,22 @@
     //只处理msg-bubble里面的超链接
     var messageSelector = "msg-bubble"
     if (event.target.tagName.toLowerCase() == "a" && isInClass(event.target, messageSelector)) {
-      var a = event.target
+      a = event.target
     }
     //点击下载图片按钮，在默认浏览器中打开
     var imageDownlodSelector = "dimmer-img-download-btn"
     if (isInClass(event.target, imageDownlodSelector)) {
-      const a = parent(event.target, imageDownlodSelector)
+      a = parent(event.target, imageDownlodSelector)
+    }
+    //最后一招，只要点击的对象在target里面就可以
+    if (a == null) {
+      a = getParentA(event.target)
     }
     if (a != null) {
       var url = a.href
       console.log(`clicked url ${url}`)
-      if (url.startsWith("https://im.dingtalk.com")) {
-        //如果是钉钉内部的应用，则不必在浏览器打开
-        return
-      }
+      //如果是钉钉内部的应用，则不必在浏览器打开
+      if (url.indexOf('dingtalk') != -1 && url.indexOf('static.dingtalk') == -1) return
       ipcRenderer.send("clickLink", url)
       event.preventDefault()
       event.stopPropagation()
@@ -79,3 +88,4 @@
   }
   setTimeout(update, 1000)
 })()
+
