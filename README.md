@@ -5,13 +5,10 @@
 2. 解决了网页版钉钉内容区域无法最大化的问题
 3. 窗口按钮：最大化、最小化、关闭
 4. 消息通知，可以显示消息详情
+5. 点击链接使用默认浏览器打开
 
 # 使用
-下载地址：  
-链接: https://pan.baidu.com/s/1tNKPPaX7qMZTPzULmnQCQQ   
-提取码: aja5
-
-解压之，cd到“钉钉安装包”目录，运行`sudo ./install.sh`
+[点此下载](https://weiyinfu.cn/%E9%92%89%E9%92%89%E5%AE%89%E8%A3%85%E5%8C%85.tar.gz)。解压之，cd到“钉钉安装包”目录，运行`sudo ./install.sh`
 
 # 开发
 * 源码链接：https://github.com/weiyinfu/dingding
