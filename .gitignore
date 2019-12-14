@@ -6,3 +6,4 @@ test.js
 test.html
 钉钉安装包.tar.gz
 .gitignore
+package-lock.json
