@@ -26,6 +26,9 @@ app.on("ready", () => {
     width: 800,
     height: 800 * (Math.sqrt(5) - 1) / 2,
     frame: false, //是否显示外边框
+    webPreferences: {
+      nodeIntegration: true
+    }
   })
   win.loadURL("https://im.dingtalk.com")
   win.webContents.on("dom-ready", () => {
